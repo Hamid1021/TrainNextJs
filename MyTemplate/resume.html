@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>وبسایت شخصی من</title>
+        <link rel="stylesheet" href="./output.css" />
+    </head>
+    <body class="text-white-900">
+        <!-- Float Setting Panel -->
+        <div class="group float-settings">
+            <div class="w-10 flex flex-col items-center justify-center h-full p-2 group-hover:-translate-x-[20px] transition-all duration-300">
+                <button id="theme-light" type="button" class="py-1 px-3 mb-2 rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"
+                        />
+                    </svg>
+                </button>
+                <button id="theme-dark" type="button" class="py-1 px-3 mb-2 rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+                        <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
+                    </svg>
+                </button>
+                <button id="back-history" type="button" class="py-1 px-3 mb-2 rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                    </svg>
+                </button>
+                <button id="forward-history" type="button" class="py-1 px-3 mb-2 rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- End Float Setting Panel -->
+        <div class="2xl:mx-[250px] xl:mx-[200px] lg:mx-[130px] mx-[50px] -z-10">
+            <nav id="nav-items" class="h-12 w-full mt-5 border-y-2 border-y-fuchsia-950 py-2">
+                <ul class="grid grid-cols-4 md:gap-x-15 nav-ul-responsive w-full h-full">
+                    <li class="nav-li shadow-lg w-1/2">
+                        <a class="block" href="./index.html">صفحه اصلی</a>
+                    </li>
+                    <li class="nav-li shadow-lg w-1/2">
+                        <a class="block" href="./blogs.html">نوشته ها</a>
+                    </li>
+                    <li class="nav-li shadow-lg w-1/2">
+                        <a class="block" href="./resume.html">روزمه من</a>
+                    </li>
+                    <li class="nav-li shadow-lg w-1/2">
+                        <a class="block" href="./animes.html">انیمه های من</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <main class="my-8">
+                <section id="about-me" class="mb-8 md:grid md:grid-cols-6 gap-4 border-2 rounded-md">
+                    <div class="md:col-span-2 flex justify-center items-center">
+                        <img class="h-auto 2xs:mt-2 md:h-[55%] lg:h-[70%] rounded-lg shadow-lg w-[95%] xs:mt-2 lg:mt-0 md:mt-0" src="./img/img2.jpg" alt="Picture" />
+                    </div>
+                    <div class="md:col-span-4 p-4 flex flex-col 2xs:p-0 2xs:text-[8px] sm:text-[16px] xs:text-[14px]">
+                        <h1 class="dark:text-white font-bold mx-3 my-4 p-4 md:text-3xl">درباره من</h1>
+                        <p class="dark:text-white mx-3 p-5 text-justify md:text-lg self-start">
+                            من حمیدرضا رضایی هستم فارغ التحصیل رشته مهندسی کامپیوتر از کلاس اول دبستان عاشق کامپیوتر بودم هستم و خواهم بود اما بنا به دلیل هایی رفتم رشته تجربی خوندم و از آناتومی بدن اطلاعات زیادی پیدا کردم اما عشقم به کامپیوتر کم نشد و در دانشگاه رشته کامپیوتر رو انتخاب کردم و الان
+                            مهندس کامپیوتر شد بلافاصله زبان برنامه نویسی پایتون رو یاد گرفتم و رفتم سراغ وب چون کد نویسی رو خیلی دوست داشتم فقط کد نویسی بک اند رو یاد گرفتم با فرم ورک جنگو.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="resume" class="mb-8 border p-2 grid grid-cols-2 xs:grid xs:grid-cols-2 2xs:flex 2xs:flex-col 2xs:ga-y-4">
+                    <!-- Single Chart -->
+                    <div class="flex flex-col items-center justify-center">
+                        <div class="w-1/2"><canvas id="Chart1"></canvas></div>
+                        <h3 class="font-bold uppercase dark:text-white">html</h3>
+                    </div>
+                    <!-- End Single Chart -->
+
+                    <!-- Single Chart -->
+                    <div class="flex flex-col items-center justify-center">
+                        <div class="w-1/2"><canvas id="Chart2"></canvas></div>
+                        <h3 class="font-bold uppercase dark:text-white">css</h3>
+                    </div>
+                    <!-- End Single Chart -->
+                </section>
+            </main>
+            <footer class="bg-white dark:bg-[rgb(37,0,36)] dark:text-gray-50 xs:text-[18px] shadow-md py-4 mt-8 2xs:text-[10px] text-center">
+                <p>
+                    تمامی حقوق مادی و معنوی این وبسایت متعلق به
+                    <span class="font-bold">حمیدرضا رضایی</span>
+                    می باشد
+                </p>
+            </footer>
+        </div>
+        <script src="./dark.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx1 = document.getElementById('Chart2').getContext('2d');
+            const myPieChart1 = new Chart(ctx1, {
+                type: 'pie',
+                data: { datasets: [{ data: [50, 50], backgroundColor: ['#FF6384', '#36A2EB'] }] },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false }, datalabels: { display: true, formatter: value => value, color: '#fff', font: { weight: 'bold', size: 16 } } }
+                }
+            });
+            const ctx = document.getElementById('Chart1').getContext('2d');
+            const myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: { datasets: [{ data: [50, 50], backgroundColor: ['#FF6384', '#36A2EB'] }] },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false }, datalabels: { display: true, formatter: value => value, color: '#fff', font: { weight: 'bold', size: 16 } } }
+                }
+            });
+        </script>
+    </body>
+</html>

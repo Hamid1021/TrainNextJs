@@ -2,20 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  /* Body Style */
+  body {
+    @apply dark:bg-gradient-to-br dark:from-[rgb(37,0,36)] dark:to-[rgb(37,0,36)] bg-gradient-to-tr from-green-100 from-10% via-sky-500 via-30% to-emerald-200 to-90% relative;
   }
-}
+  /* this is for nav bar */
+  .nav-li {
+    @apply font-bold w-full h-full dark:bg-gradient-to-tl dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500 bg-indigo-500 text-white text-center rounded-lg;
+  }
+  .nav-li:hover {
+    @apply bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-80% w-full dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500;
+  }
+  .nav-ul-responsive {
+    @apply overflow-hidden font-bold 2xs:text-[6.5px] xs:text-[8px] 2xs:gap-x-1 xs:gap-x-1 sm:gap-x-5 md:text-base md:py-0 sm:p-0;
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* this is for my projects */
+  #projects {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3 justify-self-center;
+  }
+  .proj-item-empty {
+    @apply p-4 rounded-lg shadow-md bg-gray-400 animate-pulse text-transparent lg:justify-self-center lg:size-[230px] md:size-[230px] sm:size-[280px] xs:size-[340px];
+  }
+  .proj-item-full {
+    @apply content-center text-center bg-white p-4 rounded-lg shadow-md lg:justify-self-center lg:size-[230px] md:size-[230px] sm:size-[280px] xs:size-[340px];
+  }
+
+  /* this is for my blogs */
+  .blog-item-full {
+    @apply 2xs:text-[10px] h-auto hover:bg-none hover:bg-slate-300 bg-gradient-to-r from-slate-400 from-10% via-green-200 to-slate-100 dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500 p-4 rounded-lg shadow-lg font-bold lg:text-[20px] sm:text-[20px] text-zinc-700 truncate dark:text-white dark:hover:bg-none dark:hover:bg-slate-300;
+  }
+  .blog-item-empty {
+    @apply dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500 bg-gray-300 animate-pulse text-transparent h-[56px] -z-10;
+  }
+
+  /* this is for anime */
+  .anime-item-full {
+    @apply bg-white rounded-lg shadow-lg flex 2xs:flex-col 2xs:m-0 2xs:p-0 2xs:text-xs sm:grid sm:grid-cols-5 sm:p-2;
+  }
+  .anime-item-empty {
+    @apply bg-white p-4 rounded-lg shadow-lg flex 2xs:flex-col sm:grid sm:grid-cols-5 items-center -z-10;
+  }
+
+  .anime-img-empty {
+    @apply dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500 w-full h-[140px] transition animate-pulse bg-gray-300 my-2 border-2 border-sky-500;
+  }
+  .anime-img-empty img {
+    @apply invisible;
+  }
+  .anime-img-full {
+    @apply flex items-center w-auto h-full bg-gray-300 border-2 border-sky-500 md:size-[130px];
+  }
+  .anime-img-full img {
+    @apply h-full w-full bg-cover;
+  }
+
+  .anime-title-empty {
+    @apply dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500 2xs:mb-2 w-11/12 h-3/4 sm:my-0 sm:mx-1 bg-gray-300 transition animate-pulse flex items-center justify-center;
+  }
+  .anime-title-empty h3 {
+    @apply invisible;
+  }
+  .anime-title-full {
+    @apply sm:text-center text-[20px] w-full h-full font-bold text-wrap flex items-center justify-center;
+  }
+
+  .anime-desc-empty {
+    @apply dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500 col-span-3 w-11/12 h-3/4 bg-gray-400 transition animate-pulse;
+  }
+  .anime-desc-empty p {
+    @apply invisible;
+  }
+  .anime-desc-full {
+    @apply col-span-3 w-full h-full flex items-center flex-wrap text-justify text-[14px] lg:text-[20px];
+  }
+  .anime-desc-full p {
+    @apply p-5;
+  }
+
+  /* This is for Settings Pannel */
+  .float-settings {
+    @apply fixed top-2/4 right-0 rounded-e-md shadow-md shadow-slate-700 w-10 bg-emerald-300 hover:w-20 transition-all duration-75 mt-2 -mr-1;
+  }
+
+  .paginator-a {
+    @apply dark:text-white relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0;
+  }
+  .paginator-a-current {
+    @apply relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600;
+  }
+  .paginator-dot {
+    @apply dark:text-white relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0;
+  }
+  .paginator-arrow {
+    @apply dark:text-white relative inline-flex items-center px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0;
+  }
 }
