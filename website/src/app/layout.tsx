@@ -54,6 +54,7 @@ export default function RootLayout({ children }: LayoutProps) {
             </ul>
           </nav>
           <main className="my-8">
+            {children}
             <section id="about-me" className="mb-8 md:grid md:grid-cols-6 gap-4 border-2 rounded-md">
               <div className="md:col-span-2 flex justify-center items-center">
                 <Image src={"/img/img2.jpg"} alt={"حمیدرضارضایی"} width={300} height={300} className="h-auto 2xs:mt-2 md:h-[55%] lg:h-[70%] rounded-lg shadow-lg w-[95%] xs:mt-2 lg:mt-0 md:mt-0"></Image>
@@ -67,8 +68,6 @@ export default function RootLayout({ children }: LayoutProps) {
                 </p>
               </div>
             </section>
-
-            {children}
           </main>
           <footer className="bg-white dark:bg-[rgb(37,0,36)] dark:text-gray-50 xs:text-[18px] shadow-md py-4 mt-8 2xs:text-[10px] text-center">
             <p>
