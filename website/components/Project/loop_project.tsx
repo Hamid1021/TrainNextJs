@@ -2,8 +2,6 @@ import Image from "next/image";
 import { PropsAttr } from "./types";
 import Link from "next/link";
 
-
-
 export default function Single_Project_Loop(prop: PropsAttr) {
     const { Project } = prop
     return (

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./output.css";
+import "./styles/output.css";
 import DarkBtn from "../../components/DarkBtn/Dark";
 import { ReactNode } from "react";
 import Image from "next/image";

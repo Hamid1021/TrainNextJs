@@ -6,6 +6,7 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/styles/**/*.css",
     './src/**/*.{html,js,jsx,ts,tsx}', // اضافه کردن مسیر شما
   ],
   darkMode: 'class',
