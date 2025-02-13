@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./db.sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model User {
+  id             Int      @id @default(autoincrement())
+  username       String   @unique
+  email          String?   @unique
+  password       String
+  isActive       Boolean  @default(true)
+  isAuthenticated Boolean @default(false)
+  isStaff        Boolean  @default(false)
+  isSuperuser    Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  blogs          Blog[]
+  projects       Project[]
+}
+
+model Blog {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  published Boolean  @default(false)
+  visit     Int      @default(0)
+}
+
+model Project {
+  id                   Int       @id @default(autoincrement())
+  name                 String
+  slug                 String
+  desc                 String
+  image                String
+  reason               String
+  problemStatement     String?
+  problemStatementImage String?
+  steps                ProjectStep[]
+  userId               Int
+  user                 User      @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProjectStep {
+  id        Int       @id @default(autoincrement())
+  stepName  String
+  stepDesc  String
+  stepImage String
+  projectId Int
+  project   Project   @relation(fields: [projectId], references: [id])
+}
