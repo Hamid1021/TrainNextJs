@@ -2,41 +2,51 @@
 
 import { useEffect } from 'react';
 
-const initTheme = () => {
-    if (typeof window !== 'undefined') {
-        localStorage.getItem("SiteSettings") || localStorage.setItem("SiteSettings", JSON.stringify({ theme: "light" }));
-        const e = JSON.parse(localStorage.getItem("SiteSettings") as string);
-        document.querySelector("html")?.classList.toggle("dark", "dark" === e.theme);
-        const t = document.getElementById("theme-light"),
-            l = document.getElementById("theme-dark");
-
-        if (e.theme === "light") {
-            if (t) t.style.display = "none";
-            if (l) l.style.display = "block";
-        } else {
-            if (t) t.style.display = "block";
-            if (l) l.style.display = "none";
-        }
-
-        t?.addEventListener("click", () => {
-            document.querySelector("html")?.classList.remove("dark");
-            localStorage.setItem("SiteSettings", JSON.stringify({ theme: "light" }));
-            if (t) t.style.display = "none";
-            if (l) l.style.display = "block";
-        });
-
-        l?.addEventListener("click", () => {
-            document.querySelector("html")?.classList.add("dark");
-            localStorage.setItem("SiteSettings", JSON.stringify({ theme: "dark" }));
-            if (t) t.style.display = "block";
-            if (l) l.style.display = "none";
-        });
-    }
-};
-
 const DarkBtn: React.FC = () => {
     useEffect(() => {
-        initTheme();
+        if (typeof window !== 'undefined') {
+            // مرحله 1: دریافت مقدار از localStorage
+            let siteSettings = localStorage.getItem("SiteSettings");
+            if (!siteSettings) {
+                // مرحله 2: اگر مقدار خالی بود، آن را تنظیم کنید
+                localStorage.setItem("SiteSettings", JSON.stringify({ theme: "light" }));
+                siteSettings = localStorage.getItem("SiteSettings");
+            }
+            const e = JSON.parse(siteSettings as string);
+
+            const htmlElement = document.querySelector("html");
+            if (htmlElement) {
+                htmlElement.classList.toggle("dark", e.theme === "dark");
+            }
+            const t = document.getElementById("theme-light");
+            const l = document.getElementById("theme-dark");
+
+            if (e.theme === "light") {
+                if (t) t.style.display = "none";
+                if (l) l.style.display = "block";
+            } else {
+                if (t) t.style.display = "block";
+                if (l) l.style.display = "none";
+            }
+
+            t?.addEventListener("click", () => {
+                if (htmlElement) {
+                    htmlElement.classList.remove("dark");
+                }
+                localStorage.setItem("SiteSettings", JSON.stringify({ theme: "light" }));
+                if (t) t.style.display = "none";
+                if (l) l.style.display = "block";
+            });
+
+            l?.addEventListener("click", () => {
+                if (htmlElement) {
+                    htmlElement.classList.add("dark");
+                }
+                localStorage.setItem("SiteSettings", JSON.stringify({ theme: "dark" }));
+                if (t) t.style.display = "block";
+                if (l) l.style.display = "none";
+            });
+        }
     }, []);
 
     return (

@@ -3,6 +3,16 @@ import projects from "./data";
 import Blog from "../../components/Blog/Blog";
 import blogs_data from "./(siteContent)/blog/blog_data";
 import { blogs } from "../../components/Blog/types";
+import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "وبسایت شخصی | حمیدرضا رضایی",
+  description: "سلام به همه!" +
+    " من حمیدرضا رضایی هستم. 🚀✨ برنامه نویس حرفه‌ای پایتون، و عاشق ساختن سایت‌های شگفت‌انگیز. تخصص من در فریم‌ورک‌های Django ، 🌐 ASP.NET 🐍 و Next.js🌟 است. همیشه در حال کاوش در دنیای کد هستم و تلاش می‌کنم بهترین وب‌سایت‌ها را بسازم! 💪👨‍💻" +
+    "به دنیای دیجیتال خوش آمدید! 🌍📲",
+};
+
 
 export default function Home() {
   return (
@@ -30,7 +40,7 @@ export default function Home() {
         <div className="grid grid-cols-1 gap-y-3">
           <div className="anime-item-full dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500">
             <div className="anime-img-full dark:text-white">
-              <img src="/img/img2.jpg" alt="" />
+              <Image src="/img/img2.jpg" alt="" width={500} height={500}></Image>
             </div>
             <div className="anime-title-full dark:text-white">
               <h3>Genshin Impact</h3>

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./styles/output.css";
 import DarkBtn from "../../components/DarkBtn/Dark";
@@ -16,11 +15,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-export const metadata: Metadata = {
-  title: "پروژه های من | حمیدرضا رضایی",
-  description: "بهترین پروژه هایی که بهشون افتخار می کنم",
-};
 
 interface LayoutProps {
   children: ReactNode;

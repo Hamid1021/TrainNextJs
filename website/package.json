@@ -4,10 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"next dev --turbopack\" \"tailwindcss -i ./src/app/styles/input.css -o ./src/app/styles/output.css --watch\"",
-    "build": "npx tailwindcss -i ./src/app/styles/input.css -o ./src/app/styles/output.css --minify && next build",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "build:css": "tailwindcss -i ./src/app/styles/input.css -o ./src/app/styles/output.css --minify"
+    "lint": "next lint"
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -20,6 +19,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.4",
     "next": "15.1.4",
+    "next-sitemap": "^4.2.3",
     "prettier": "^3.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -30,12 +30,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^8.2.0",
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
     "postcss": "^8.5.2",
     "prisma": "^6.3.1",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5",
-    "concurrently": "^8.2.0"
+    "typescript": "^5"
   }
 }

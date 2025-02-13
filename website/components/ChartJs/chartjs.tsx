@@ -25,7 +25,7 @@ const initChart = () => {
             const ctx = chart1Element.getContext('2d');
 
             if (ctx1 && ctx) {
-                const myPieChart1 = new Chart(ctx1, {
+                new Chart(ctx1, {
                     type: 'pie',
                     data: { datasets: [{ data: [50, 50], backgroundColor: ['#FF6384', '#36A2EB'] }] },
                     options: {
@@ -42,7 +42,7 @@ const initChart = () => {
                     }
                 });
 
-                const myPieChart = new Chart(ctx, {
+                new Chart(ctx, {
                     type: 'pie',
                     data: { datasets: [{ data: [50, 50], backgroundColor: ['#FF6384', '#36A2EB'] }] },
                     options: {
