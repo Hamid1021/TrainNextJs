@@ -1,8 +1,7 @@
 import Single_Project_Loop from "../../components/Project/loop_project";
-import projects from "./data";
 import Blog from "../../components/Blog/Blog";
-import blogs_data from "./(siteContent)/blog/blog_data";
-import { blogs } from "../../components/Blog/types";
+import { Blog as BlogType } from "../../components/Blog/types";
+import { Project } from "../../components/Project/types";
 import Image from "next/image";
 import { Metadata } from "next";
 
@@ -13,25 +12,43 @@ export const metadata: Metadata = {
     "به دنیای دیجیتال خوش آمدید! 🌍📲",
 };
 
+export default async function Home() {
+  // دریافت آخرین ۵ مقاله
+  const resBlogs = await fetch('http://localhost:3000/api/blogs?limit=5');
+  if (!resBlogs.ok) {
+    return <div>خطایی در دریافت مقالات رخ داده است.</div>;
+  }
+  const blogsData = await resBlogs.json();
+  const blogs: BlogType[] = blogsData.blogs;
 
-export default function Home() {
+  // دریافت آخرین ۵ پروژه
+  const resProjects = await fetch('http://localhost:3000/api/projects?limit=5');
+  if (!resProjects.ok) {
+    console.error("Failed to fetch projects:", await resProjects.text());
+    return <div>خطایی در دریافت پروژه‌ها رخ داده است.</div>;
+  }
+  const projects: Project[] = await resProjects.json();
+
   return (
     <>
       <section id="last-blogs" className="mb-8">
         <h2 className="text-2xl 2xs:text-sm font-semibold mb-4 dark:text-white sm:text-[24px] sm:font-bold">اخرین نوشته ها</h2>
         <div className="grid grid-cols-1 gap-y-4">
-          {
-            blogs_data().map((blog: blogs) => (
-              <Blog key={blog.id} Blog={blog} />
-            ))
-          }
+          {Array.isArray(blogs) && blogs.map((blog) => (
+            <Blog key={blog.id} blog={blog} />
+          ))}
+          {blogs.length === 0 && (
+            <div className="blog-item-empty">
+              <a href="#">هیچ نوشته‌ای موجود نیست.</a>
+            </div>
+          )}
         </div>
       </section>
       <section id="last-projects" className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 dark:text-white">لیست پروژه ها</h2>
         <div className="grid grid-cols-1 gap-y-3">
-          {projects().map((project) => (
-            <Single_Project_Loop key={project.id} Project={project} />
+          {Array.isArray(projects) && projects.map((project) => (
+            <Single_Project_Loop key={project.id} project={project} />
           ))}
         </div>
       </section>
@@ -40,7 +57,7 @@ export default function Home() {
         <div className="grid grid-cols-1 gap-y-3">
           <div className="anime-item-full dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500">
             <div className="anime-img-full dark:text-white">
-              <Image src="/img/img2.jpg" alt="" width={500} height={500}></Image>
+              <Image src="/img/img2.jpg" alt="Genshin Impact" width={500} height={500} />
             </div>
             <div className="anime-title-full dark:text-white">
               <h3>Genshin Impact</h3>
@@ -59,5 +76,3 @@ export default function Home() {
     </>
   );
 }
-
-

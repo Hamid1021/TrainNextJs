@@ -1,10 +1,14 @@
-export interface blogs {
+export interface Blog {
     id: number;
     title: string;
-    description?: string;
-    visit?: number;
+    content: string;
+    authorId: number;
+    createdAt: string;
+    updatedAt: string;
+    published: boolean;
+    visit: number;
 }
 
 export interface BlogProps {
-    Blog: blogs;
+    blog: Blog;
 }

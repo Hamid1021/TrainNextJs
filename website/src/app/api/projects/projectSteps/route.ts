@@ -28,7 +28,13 @@ const verifyToken = async (req: Request, roles: string[]) => {
 // GET method (برای استپ‌های پروژه)
 export const GET = async (req: Request) => {
     try {
-        const projectSteps = await prisma.projectStep.findMany();
+        const urlParams = new URL(req.url).searchParams;
+        const limitStr = urlParams.get('limit') ?? '5'; // استفاده از فاصله‌ی اطمینان برای مقدار پیش‌فرض
+        const limit = parseInt(limitStr);
+
+        const projectSteps = await prisma.projectStep.findMany({
+            take: limit
+        });
         return new Response(JSON.stringify(projectSteps), { status: 200 });
     } catch (error: unknown) {
         return new Response(JSON.stringify({ error: error instanceof Error ? error.message : 'Failed to fetch project steps' }), { status: 500 });

@@ -1,5 +1,5 @@
-import projects from "@/app/data"
-import Single_Project from "../../../../../../components/Project/single_project"
+import { PrismaClient } from "@prisma/client";
+import Single_Project from "../../../../../../components/Project/single_project";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,15 +9,29 @@ export const metadata: Metadata = {
         "به دنیای دیجیتال خوش آمدید! 🌍📲",
 };
 
-export default async function Page({ params, }: { params: Promise<{ id: number, slug: string }> }) {
+const prisma = new PrismaClient();
 
-    const id = (await params).id
-    const slug = (await params).slug
-    const project = projects().findLast(o => o.id == id && o.slug == slug)
-    console.log(slug);
+export default async function Page({ params }: { params: { id: string; slug: string } }) {
+    const id = parseInt(params.id);
+    const slug = params.slug;
+
+    const project = await prisma.project.findFirst({
+        where: {
+            id: id,
+            slug: slug
+        },
+        include: {
+            steps: true
+        }
+    });
+
     if (project) {
         return (
-            <Single_Project Project={project} />
-        )
+            <Single_Project project={project} />
+        );
+    } else {
+        return (
+            <div>پروژه‌ای با مشخصات وارد شده یافت نشد.</div>
+        );
     }
 }

@@ -28,10 +28,25 @@ const verifyToken = async (req: Request, roles: string[]) => {
 // GET method (برای پست‌ها)
 export const GET = async (req: Request) => {
     try {
+        const urlParams = new URL(req.url).searchParams;
+        const page = parseInt(urlParams.get('page') ?? '1');
+        const pageSize = parseInt(urlParams.get('limit') ?? '3');
+
         const publishedPosts = await prisma.blog.findMany({
-            where: { published: true }
+            where: { published: true },
+            skip: (page - 1) * pageSize,
+            take: pageSize,
         });
-        return new Response(JSON.stringify(publishedPosts), { status: 200 });
+
+        const totalPosts = await prisma.blog.count({
+            where: { published: true },
+        });
+
+        return new Response(JSON.stringify({
+            blogs: publishedPosts,
+            currentPage: page,
+            totalPages: Math.ceil(totalPosts / pageSize),
+        }), { status: 200 });
     } catch (error: unknown) {
         return new Response(JSON.stringify({ error: error instanceof Error ? error.message : 'Failed to fetch posts' }), { status: 500 });
     }
