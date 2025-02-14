@@ -32,14 +32,18 @@ async function getData(page: number, pageSize: number): Promise<BlogsProps> {
 }
 
 interface PageParams {
-    params: Promise<{ page: number; }>;
+    searchParams: Promise<{ page?: string }>;
 }
 
-export default async function Blogs({ params }: PageParams) {
-    const { page } = await params;
+export default async function Blogs({ searchParams }: PageParams) {
+    const { page } = await searchParams;
+
+    // Check if searchParams.page is defined and a valid number, otherwise set to 1
+    const currentPage = page && !isNaN(Number(page)) ? Number(page) : 1;
     const pageSize = 8;
+
     try {
-        const data: BlogsProps = await getData(page ? page : 1, pageSize);
+        const data: BlogsProps = await getData(currentPage, pageSize);
 
         return (
             <>

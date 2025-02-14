@@ -44,7 +44,7 @@ export default function Single_Project(prop: PropsAttr) {
                         />
                     </div>
                 )}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                     {project.steps ?
                         project?.steps.map((step: Step) => (
                             <Step_Loop key={step.id} step={step} />

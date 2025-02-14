@@ -27,13 +27,13 @@ export default async function Home() {
     const blogs: BlogType[] = _blogs.blogs;
 
     // دریافت آخرین ۵ پروژه
-    const { projects: latestProjects } = await getProjects(5);
+    const _projects = await getProjects(5);
 
-    if (!latestProjects.length) {
+    if (!_projects.length) {
       return <div>خطایی در دریافت پروژه‌ها رخ داده است.</div>;
     }
 
-    const projects: Project[] = latestProjects;
+    const projects: Project[] = _projects;
 
     return (
       <>

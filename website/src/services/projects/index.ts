@@ -7,7 +7,7 @@ const getProjects = async (limit: number) => {
         return response.data;
     } catch (error) {
         console.error("Error fetching projects:", error);
-        throw error;
+        return [];
     }
 };
 
@@ -18,7 +18,7 @@ const getProject = async (id: number) => {
         return response.data; // این شامل استپ‌ها خواهد بود
     } catch (error) {
         console.error("Error fetching project:", error);
-        throw error;
+        return null;
     }
 };
 
@@ -29,7 +29,7 @@ const createProject = async (data: { name: string; slug: string; desc: string; i
         return response.data;
     } catch (error) {
         console.error("Error creating project:", error);
-        throw error;
+        return null;
     }
 };
 
@@ -40,7 +40,7 @@ const updateProject = async (id: number, data: { name: string; slug: string; des
         return response.data;
     } catch (error) {
         console.error("Error updating project:", error);
-        throw error;
+        return null;
     }
 };
 
@@ -50,7 +50,6 @@ const deleteProject = async (id: number) => {
         await api.delete(`/projects/${id}`);
     } catch (error) {
         console.error("Error deleting project:", error);
-        throw error;
     }
 };
 
@@ -61,7 +60,7 @@ const getProjectSteps = async (limit: number) => {
         return response.data;
     } catch (error) {
         console.error("Error fetching project steps:", error);
-        throw error;
+        return [];
     }
 };
 
@@ -72,7 +71,7 @@ const getProjectStep = async (id: number) => {
         return response.data;
     } catch (error) {
         console.error("Error fetching project step:", error);
-        throw error;
+        return null;
     }
 };
 
@@ -83,7 +82,7 @@ const createProjectStep = async (data: { stepName: string; stepDesc: string; ste
         return response.data;
     } catch (error) {
         console.error("Error creating project step:", error);
-        throw error;
+        return null;
     }
 };
 
@@ -94,7 +93,7 @@ const updateProjectStep = async (id: number, data: { stepName: string; stepDesc:
         return response.data;
     } catch (error) {
         console.error("Error updating project step:", error);
-        throw error;
+        return null;
     }
 };
 
@@ -104,7 +103,6 @@ const deleteProjectStep = async (id: number) => {
         await api.delete(`/projects/projectSteps/${id}`);
     } catch (error) {
         console.error("Error deleting project step:", error);
-        throw error;
     }
 };
 
@@ -119,4 +117,4 @@ export {
     createProjectStep,
     updateProjectStep,
     deleteProjectStep
-}; // export توابع
+};
