@@ -18,33 +18,42 @@ const DarkBtn: React.FC = () => {
             if (htmlElement) {
                 htmlElement.classList.toggle("dark", e.theme === "dark");
             }
-            const t = document.getElementById("theme-light");
-            const l = document.getElementById("theme-dark");
+            const themeLightButtons = Array.from(document.getElementsByClassName("theme-light")) as HTMLElement[];
+            const themeDarkButtons = Array.from(document.getElementsByClassName("theme-dark")) as HTMLElement[];
+            const themeTitle = document.getElementById("theme_title");
 
             if (e.theme === "light") {
-                if (t) t.style.display = "none";
-                if (l) l.style.display = "block";
+                themeLightButtons.forEach(btn => btn.style.display = "none");
+                themeDarkButtons.forEach(btn => btn.style.display = "block");
+                if (themeTitle) themeTitle.innerText = "روشن";
             } else {
-                if (t) t.style.display = "block";
-                if (l) l.style.display = "none";
+                themeLightButtons.forEach(btn => btn.style.display = "block");
+                themeDarkButtons.forEach(btn => btn.style.display = "none");
+                if (themeTitle) themeTitle.innerText = "تاریک";
             }
 
-            t?.addEventListener("click", () => {
-                if (htmlElement) {
-                    htmlElement.classList.remove("dark");
-                }
-                localStorage.setItem("SiteSettings", JSON.stringify({ theme: "light" }));
-                if (t) t.style.display = "none";
-                if (l) l.style.display = "block";
+            themeLightButtons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    if (htmlElement) {
+                        htmlElement.classList.remove("dark");
+                    }
+                    localStorage.setItem("SiteSettings", JSON.stringify({ theme: "light" }));
+                    themeLightButtons.forEach(btn => btn.style.display = "none");
+                    themeDarkButtons.forEach(btn => btn.style.display = "block");
+                    if (themeTitle) themeTitle.innerText = "روشن";
+                });
             });
 
-            l?.addEventListener("click", () => {
-                if (htmlElement) {
-                    htmlElement.classList.add("dark");
-                }
-                localStorage.setItem("SiteSettings", JSON.stringify({ theme: "dark" }));
-                if (t) t.style.display = "block";
-                if (l) l.style.display = "none";
+            themeDarkButtons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    if (htmlElement) {
+                        htmlElement.classList.add("dark");
+                    }
+                    localStorage.setItem("SiteSettings", JSON.stringify({ theme: "dark" }));
+                    themeLightButtons.forEach(btn => btn.style.display = "block");
+                    themeDarkButtons.forEach(btn => btn.style.display = "none");
+                    if (themeTitle) themeTitle.innerText = "تاریک";
+                });
             });
         }
     }, []);

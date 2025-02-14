@@ -8,17 +8,17 @@
     @apply dark:bg-gradient-to-br dark:from-[rgb(37,0,36)] dark:to-[rgb(37,0,36)] bg-gradient-to-tr from-green-100 from-10% via-sky-500 via-30% to-emerald-200 to-90% relative;
   }
   .float-settings {
-    @apply fixed top-3/4 right-0 rounded-e-md shadow-md shadow-slate-700 w-10 bg-emerald-300 hover:w-20 transition-all duration-75 mt-2 -mr-1;
+    @apply fixed top-1/4 right-0 rounded-e-md shadow-md shadow-slate-700 w-10 bg-emerald-300 hover:w-20 transition-all duration-75 mt-2 -mr-1;
   }
   /* this is for nav bar */
   .nav-li {
-    @apply font-bold w-full h-full dark:bg-gradient-to-tl dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500 bg-indigo-500 text-white text-center rounded-lg;
+    @apply flex items-center font-bold w-full h-full dark:bg-gradient-to-tl dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500 bg-indigo-500 text-white text-center rounded-lg;
   }
   .nav-li:hover {
     @apply bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-80% w-full dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500;
   }
   .nav-ul-responsive {
-    @apply overflow-hidden font-bold 2xs:text-[6.5px] xs:text-[8px] 2xs:gap-x-1 xs:gap-x-1 sm:gap-x-5 md:text-base md:py-0 sm:p-0;
+    @apply md:text-[18px] sm:text-[16px] overflow-hidden font-bold 2xs:text-[9px] xs:text-[10px] 2xs:gap-x-1 xs:gap-x-1 sm:gap-x-5 md:py-0 sm:p-0;
   }
 
   /* this is for my projects */
@@ -67,7 +67,7 @@
 
   /* this is for my blogs */
   .blog-item-full {
-    @apply 2xs:text-[10px] h-auto hover:bg-none hover:bg-slate-300 bg-gradient-to-r from-slate-400 from-10% via-green-200 to-slate-100 dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500 p-4 rounded-lg shadow-lg font-bold lg:text-[20px] sm:text-[20px] text-zinc-700 truncate dark:text-white dark:hover:bg-none dark:hover:bg-slate-300;
+    @apply md:text-[24px] 2xs:text-[10px] h-auto hover:bg-none hover:bg-slate-300 bg-gradient-to-r from-slate-400 from-10% via-green-200 to-slate-100 dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500 p-4 rounded-lg shadow-lg font-bold lg:text-[20px] sm:text-[20px] xs:text-[16px] text-zinc-700 truncate dark:text-white dark:hover:bg-none dark:hover:bg-slate-300;
   }
   .blog-item-empty {
     @apply dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500 bg-gray-300 animate-pulse text-transparent h-[56px] -z-10;
