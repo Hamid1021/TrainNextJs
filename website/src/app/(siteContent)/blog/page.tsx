@@ -17,12 +17,12 @@ interface BlogsProps {
 }
 
 async function getData(page: number, pageSize: number): Promise<BlogsProps> {
-    const res = await fetch(`http://localhost:3000/api/blogs?page=${page}&limit=${pageSize}`);
+    const res = await fetch(`/api/blogs?page=${page}&limit=${pageSize}`);
     const data = await res.json();
     return data;
 }
 
-export default async function Blogs({ searchParams }: { searchParams: { page?: string } }) {
+export default async function Blogs({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
     const params = await searchParams;
     const page = parseInt(params.page ?? '1');
     const pageSize = 8;
@@ -30,7 +30,6 @@ export default async function Blogs({ searchParams }: { searchParams: { page?: s
     const data: BlogsProps = await getData(page, pageSize);
 
     if (!Array.isArray(data.blogs)) {
-        console.error("Error fetching blogs: ", data.blogs);
         data.blogs = [];
     }
 

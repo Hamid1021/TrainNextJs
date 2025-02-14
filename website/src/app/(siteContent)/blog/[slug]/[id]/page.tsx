@@ -14,14 +14,14 @@ interface BlogProps {
 }
 
 async function getBlog(id: string): Promise<{ blog: BlogType, author: { username: string; email: string | null; first_name: string; last_name: string | null } } | null> {
-    const res = await fetch(`http://localhost:3000/api/blogs/${id}`);
+    const res = await fetch(`/api/blogs/${id}`);
     if (!res.ok) {
         return null;
     }
     const blog = await res.json();
 
     // دریافت اطلاعات نویسنده
-    const authorRes = await fetch(`http://localhost:3000/api/users?id=${blog.authorId}`);
+    const authorRes = await fetch(`/api/users?id=${blog.authorId}`);
     if (!authorRes.ok) {
         return null;
     }
@@ -55,13 +55,15 @@ const SingleBlog: React.FC<BlogProps> = ({ blog, author }) => {
     );
 };
 
-const Page = async ({ params }: { params: { id: string; slug: string } }) => {
-    const p = await params
+const Page = async ({ params }: { params: Promise<{ id: string; slug: string }> }) => {
+    const p = await params;
     const blogData = await getBlog(p.id);
+
     if (!blogData) {
         return <p>بلاگ پیدا نشد.</p>;
     }
+
     return <SingleBlog blog={blogData.blog} author={blogData.author} />;
-}
+};
 
 export default Page;

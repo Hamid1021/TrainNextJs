@@ -11,9 +11,10 @@ export const metadata: Metadata = {
 
 const prisma = new PrismaClient();
 
-export default async function Page({ params }: { params: { id: string; slug: string } }) {
-    const id = parseInt(params.id);
-    const slug = params.slug;
+export default async function Page({ params }: { params: Promise<{ id: string; slug: string }> }) { // Correct type definition here!
+    const p = await params; // Await the params Promise
+    const id = parseInt(p.id);
+    const slug = p.slug;
 
     const project = await prisma.project.findFirst({
         where: {

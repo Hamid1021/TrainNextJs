@@ -4,6 +4,21 @@ import { Blog as BlogType } from "../../components/Blog/types";
 import { Project } from "../../components/Project/types";
 import Image from "next/image";
 import { Metadata } from "next";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const BASE_URL = process.env.BASE_URL;
+
+if (!BASE_URL) {
+  throw new Error("BASE_URL is not defined in the environment variables");
+}
+
+const BASE_URL_DEV = process.env.BASE_URL_DEV;
+
+if (!BASE_URL_DEV) {
+  throw new Error("BASE_URL_DEV is not defined in the environment variables");
+}
 
 export const metadata: Metadata = {
   title: "وبسایت شخصی | حمیدرضا رضایی",
@@ -14,7 +29,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   // دریافت آخرین ۵ مقاله
-  const resBlogs = await fetch('http://localhost:3000/api/blogs?limit=5');
+  const resBlogs = await fetch(BASE_URL + 'api/blogs?limit=5');
   if (!resBlogs.ok) {
     return <div>خطایی در دریافت مقالات رخ داده است.</div>;
   }
@@ -22,7 +37,7 @@ export default async function Home() {
   const blogs: BlogType[] = blogsData.blogs;
 
   // دریافت آخرین ۵ پروژه
-  const resProjects = await fetch('http://localhost:3000/api/projects?limit=5');
+  const resProjects = await fetch(BASE_URL + 'api/projects?limit=5');
   if (!resProjects.ok) {
     console.error("Failed to fetch projects:", await resProjects.text());
     return <div>خطایی در دریافت پروژه‌ها رخ داده است.</div>;

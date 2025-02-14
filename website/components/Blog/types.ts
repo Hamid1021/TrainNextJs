@@ -13,3 +13,9 @@ export interface Blog {
 export interface BlogProps {
     blog: Blog;
 }
+
+
+export interface BlogListParams {
+    page: number;
+    limit: number;
+}
