@@ -17,7 +17,9 @@ generator client {
 model User {
   id             Int      @id @default(autoincrement())
   username       String   @unique
-  email          String?   @unique
+  email          String?  @unique
+  first_name     String   @default("NoName")
+  last_name      String?
   password       String
   isActive       Boolean  @default(true)
   isAuthenticated Boolean @default(false)
@@ -31,7 +33,8 @@ model User {
 
 model Blog {
   id        Int      @id @default(autoincrement())
-  title     String
+  title     String   @unique
+  slug      String   @default("") @unique
   content   String
   authorId  Int
   author    User     @relation(fields: [authorId], references: [id])

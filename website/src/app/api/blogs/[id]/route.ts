@@ -25,6 +25,7 @@ const verifyToken = async (req: Request, roles: string[]) => {
     }
 }
 
+
 // GET method (برای دریافت یک پست مشخص)
 export const GET = async (req: Request) => {
     try {
@@ -33,6 +34,15 @@ export const GET = async (req: Request) => {
         const post = await prisma.blog.findUnique({
             where: { id: Number(id) }
         });
+
+        // افزایش بازدید
+        if (post) {
+            await prisma.blog.update({
+                where: { id: Number(id) },
+                data: { visit: { increment: 1 } }
+            });
+        }
+
         return new Response(JSON.stringify(post), { status: 200 });
     } catch (error: unknown) {
         return new Response(JSON.stringify({ error: error instanceof Error ? error.message : 'Failed to fetch post' }), { status: 500 });

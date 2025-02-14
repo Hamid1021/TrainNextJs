@@ -7,7 +7,7 @@ export default function Blog(props: BlogProps) {
     return (
         <Suspense fallback={<BlogLoading />}>
             <div className="blog-item-full">
-                <a href={`/blogs/${blog.id}`}>{blog.title}</a>
+                <a href={`/blog/${blog.slug}/${blog.id}`}>{blog.title}</a>
             </div>
         </Suspense>
     );

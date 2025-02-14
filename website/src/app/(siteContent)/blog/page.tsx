@@ -25,7 +25,7 @@ async function getData(page: number, pageSize: number): Promise<BlogsProps> {
 export default async function Blogs({ searchParams }: { searchParams: { page?: string } }) {
     const params = await searchParams;
     const page = parseInt(params.page ?? '1');
-    const pageSize = 3;
+    const pageSize = 8;
 
     const data: BlogsProps = await getData(page, pageSize);
 
@@ -68,7 +68,8 @@ export default async function Blogs({ searchParams }: { searchParams: { page?: s
                                     <Link href={`?page=${data.currentPage - 1}`} className={`paginator-arrow rounded-r-md ${data.currentPage === 1 ? 'pointer-events-none opacity-50' : ''}`}>
                                         <span className="sr-only">صفحه قبلی</span>
                                         <svg className="size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                            <path fillRule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1-1.06 0Z" clipRule="evenodd" />
+                                            <path fillRule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25-4.25a.75.75 0 0 1-1.06-1.06L11.94
+                                    10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
                                         </svg>
                                     </Link>
 
@@ -79,8 +80,7 @@ export default async function Blogs({ searchParams }: { searchParams: { page?: s
                                     <Link href={`?page=${data.currentPage + 1}`} className={`paginator-arrow rounded-l-md ${data.currentPage === data.totalPages ? 'pointer-events-none opacity-50' : ''}`}>
                                         <span className="sr-only">صفحه بعدی</span>
                                         <svg className="size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                            <path fillRule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25-4.25a.75.75 0 0 1-1.06-1.06L11.94
-                                    10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                                            <path fillRule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1-1.06 0Z" clipRule="evenodd" />
                                         </svg>
                                     </Link>
                                 </nav>
