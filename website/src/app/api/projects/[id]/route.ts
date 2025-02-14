@@ -1,3 +1,4 @@
+// src/app/api/projects/[id]/route.ts
 import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -17,7 +18,7 @@ interface JWTPayload {
     isActive: boolean;
 }
 
-const verifyToken = async (req: Request | Request, roles: string[]): Promise<JWTPayload> => {
+const verifyToken = async (req: Request, roles: string[]): Promise<JWTPayload> => {
     const token = req.headers.get('Authorization')?.split(' ')[1];
     if (!token) {
         throw new Error('No token provided');
@@ -40,7 +41,8 @@ export const GET = async (req: Request) => {
         const urlParams = new URL(req.url).pathname.split('/');
         const id = urlParams[urlParams.length - 1];
         const project = await prisma.project.findUnique({
-            where: { id: Number(id) }
+            where: { id: Number(id) },
+            include: { steps: true }, // شامل استپ‌های پروژه
         });
         return new Response(JSON.stringify(project), { status: 200 });
     } catch (error: unknown) {

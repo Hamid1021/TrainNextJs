@@ -1,24 +1,28 @@
 import axios, { AxiosError, HttpStatusCode, InternalAxiosRequestConfig } from 'axios';
-import Router from 'next/router';
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const api = axios.create({
-    baseURL: "/api/",
+    baseURL: BASE_URL,
     headers: { "Content-Type": "application/json" }
 });
 
 // interceptor برای مدیریت درخواست‌ها (مثلا افزودن توکن)
 const apiInterceptor = async (request: InternalAxiosRequestConfig) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-        request.headers.Authorization = `Bearer ${token}`;
+    if (typeof window !== 'undefined') {
+        const token = localStorage.getItem('token');
+        if (token) {
+            request.headers.Authorization = `Bearer ${token}`;
+        }
     }
     return request;
 };
 
-
 const errorInterceptor = async (axiosError: AxiosError) => {
     if (axiosError.response?.status === HttpStatusCode.Unauthorized) {
-        await Router.push('/auth/login');
+        if (typeof window !== 'undefined') {
+            window.location.href = '/auth/login';
+        }
     }
     return Promise.reject(axiosError);
 };

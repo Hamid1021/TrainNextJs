@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
-import Single_Project from "../../../../../../components/Project/single_project";
 import { Metadata } from "next";
+import { getProject } from "@/services/projects"; // افزودن getProject
+import Single_Project from "../../../../../components/Project/single_project";
 
 export const metadata: Metadata = {
     title: "پروژه ها | حمیدرضا رضایی",
@@ -9,24 +9,17 @@ export const metadata: Metadata = {
         "به دنیای دیجیتال خوش آمدید! 🌍📲",
 };
 
-const prisma = new PrismaClient();
+interface PageParams {
+    params: Promise<{ id: string; slug: string }>;
+}
 
-export default async function Page({ params }: { params: Promise<{ id: string; slug: string }> }) { // Correct type definition here!
-    const p = await params; // Await the params Promise
-    const id = parseInt(p.id);
-    const slug = p.slug;
 
-    const project = await prisma.project.findFirst({
-        where: {
-            id: id,
-            slug: slug
-        },
-        include: {
-            steps: true
-        }
-    });
+export default async function Page({ params }: PageParams) {
+    const { id, slug } = await params;
 
-    if (project) {
+    const project = await getProject(Number(id));
+
+    if (project && project.slug === slug) {
         return (
             <Single_Project project={project} />
         );

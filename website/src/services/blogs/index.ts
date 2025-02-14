@@ -1,8 +1,8 @@
-import { Blog, BlogListParams } from "../../../../components/Blog/types"
-import { api } from "../api"
+import { Blog, BlogListParams } from "../../components/Blog/types";
+import { api } from "../api";
 
 // تابع برای دریافت لیست بلاگ‌ها
-const getBlogs = async (params: BlogListParams): Promise<Blog[]> => {
+const getBlogs = async (params: BlogListParams): Promise<{ blogs: Blog[], totalItems: number }> => {
     try {
         const response = await api.get("/blogs", { params });
         return response.data;

@@ -1,3 +1,4 @@
+// src/app/api/blogs/route.ts
 import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -17,7 +18,7 @@ interface JWTPayload {
     isActive: boolean;
 }
 
-const verifyToken = async (req: Request | Request, roles: string[]): Promise<JWTPayload> => {
+const verifyToken = async (req: Request, roles: string[]): Promise<JWTPayload> => {
     const token = req.headers.get('Authorization')?.split(' ')[1];
     if (!token) {
         throw new Error('No token provided');
@@ -53,6 +54,7 @@ export const GET = async (req: Request) => {
 
         return new Response(JSON.stringify({
             blogs: publishedPosts,
+            totalItems: totalPosts, // اضافه کردن تعداد کل آیتم‌ها
             currentPage: page,
             totalPages: Math.ceil(totalPosts / pageSize),
         }), { status: 200 });
