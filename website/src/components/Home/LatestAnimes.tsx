@@ -8,7 +8,7 @@ const LatestAnimes = () => {
       <div className="grid grid-cols-1 gap-y-3">
         <div className="anime-item-full dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500">
           <div className="anime-img-full dark:text-white">
-            <Image src="/img/img2.jpg" alt="Genshin Impact" width={500} height={500} />
+            <Image src="/No_Photo.png" alt="Genshin Impact" width={500} height={500} />
           </div>
           <div className="anime-title-full dark:text-white">
             <h3>Genshin Impact</h3>

@@ -17,21 +17,22 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
+  const isProduction = process.env.NODE_ENV === 'production';
+  const useMockData = process.env.USE_MOCK_DATA === 'true';
+
+  let blogs: BlogType[] = [];
+  let projects: Project[] = [];
+
   try {
-    const isProduction = process.env.NODE_ENV === 'production';
-
-    let blogs: BlogType[] = [];
-    let projects: Project[] = [];
-
-    if (isProduction) {
+    if (isProduction && !useMockData) {
       const _blogs = await getBlogs({ page: 1, limit: 5 });
       blogs = _blogs.blogs || [];
 
       const _projects = await getProjects(5);
       projects = _projects || [];
     } else {
-      blogs = mockBlogs as BlogType[];
-      projects = mockProjects as Project[];
+      blogs = mockBlogs;
+      projects = mockProjects;
     }
 
     return (

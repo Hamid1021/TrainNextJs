@@ -50,7 +50,7 @@ export default function RootLayout({ children }: LayoutProps) {
             {children}
             <section id="about-me" className="mb-8 grid md:grid-cols-6 gap-4 border-2 rounded-md p-4">
               <div className="md:col-span-2 flex md:items-start justify-center items-center">
-                <Image src="/img/img2.jpg" alt="حمیدرضا رضایی" width={300} height={300} className="h-auto rounded-lg shadow-lg w-full max-w-[300px]" />
+                <Image src="/No_Photo.png" alt="حمیدرضا رضایی" width={300} height={300} className="h-auto rounded-lg shadow-lg w-full max-w-[300px]" />
               </div>
               <div className="md:col-span-4 flex flex-col">
                 <h1 className="font-bold text-2xl my-4">درباره من</h1>
