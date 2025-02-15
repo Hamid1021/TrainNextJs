@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://hamidrezarezaii.ir</loc><lastmod>2025-02-13T11:39:52.075Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://hamidrezarezaii.ir/blog</loc><lastmod>2025-02-13T11:39:52.076Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://hamidrezarezaii.ir/resume</loc><lastmod>2025-02-13T11:39:52.076Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://hamidrezarezaii.ir/auth/login</loc><lastmod>2025-02-15T12:23:25.174Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://hamidrezarezaii.ir/resume</loc><lastmod>2025-02-15T12:23:25.175Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://hamidrezarezaii.ir</loc><lastmod>2025-02-15T12:23:25.175Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://hamidrezarezaii.ir/blog/React/1</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://hamidrezarezaii.ir/blog/Angular/2</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://hamidrezarezaii.ir/blog/Vue/3</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://hamidrezarezaii.ir/blog/Django/4</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://hamidrezarezaii.ir/blog/Laravel/5</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://hamidrezarezaii.ir/blog/Svelte/6</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://hamidrezarezaii.ir/blog/Flask/7</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://hamidrezarezaii.ir/blog/Ruby/8</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://hamidrezarezaii.ir/blog/Express/9</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://hamidrezarezaii.ir/blog/Spring/10</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://hamidrezarezaii.ir/blog/11</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://hamidrezarezaii.ir/project/1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://hamidrezarezaii.ir/project/2</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://hamidrezarezaii.ir/project/3</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://hamidrezarezaii.ir/project/4</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://hamidrezarezaii.ir/project/5</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>

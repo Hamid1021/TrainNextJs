@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://hamidrezarezaii.ir
+Host: https://hamidrezarezaii.ir/
 
 # Sitemaps
 Sitemap: https://hamidrezarezaii.ir/sitemap.xml

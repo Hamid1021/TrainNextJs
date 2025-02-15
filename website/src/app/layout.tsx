@@ -42,7 +42,7 @@ export default function RootLayout({ children }: LayoutProps) {
                 <Link href="/resume" className="block w-full text-center">روزمه من</Link>
               </li>
               <li className="nav-li shadow-lg">
-                <a href="#" className="block w-full text-center">انیمه های من</a>
+                <Link href="/" className="block w-full text-center">انیمه های من</Link>
               </li>
             </ul>
           </nav>

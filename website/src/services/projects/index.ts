@@ -1,9 +1,9 @@
 import { api } from "../api";
+import { Project, Step } from "@/components/Project/types";
 
-// تابع برای دریافت لیست پروژه‌ها
-const getProjects = async (limit: number) => {
+const getProjects = async (limit: number): Promise<Project[]> => {
     try {
-        const response = await api.get(`/projects?limit=${limit}`);
+        const response = await api.get(`/api/projects?limit=${limit}`);
         return response.data;
     } catch (error) {
         console.error("Error fetching projects:", error);
@@ -11,21 +11,19 @@ const getProjects = async (limit: number) => {
     }
 };
 
-// تابع برای دریافت یک پروژه مشخص
-const getProject = async (id: number) => {
+const getProject = async (id: number): Promise<Project | null> => {
     try {
-        const response = await api.get(`/projects/${id}`);
-        return response.data; // این شامل استپ‌ها خواهد بود
+        const response = await api.get(`/api/projects/${id}`);
+        return response.data;
     } catch (error) {
         console.error("Error fetching project:", error);
         return null;
     }
 };
 
-// تابع برای ایجاد پروژه جدید
-const createProject = async (data: { name: string; slug: string; desc: string; image: string; reason: string; problemStatement: string; problemStatementImage: string; userId: number }) => {
+const createProject = async (data: { name: string; slug: string; desc: string; image: string; reason: string; problemStatement: string; problemStatementImage: string; userId: number }): Promise<Project | null> => {
     try {
-        const response = await api.post("/projects", data);
+        const response = await api.post("/api/projects", data);
         return response.data;
     } catch (error) {
         console.error("Error creating project:", error);
@@ -33,10 +31,9 @@ const createProject = async (data: { name: string; slug: string; desc: string; i
     }
 };
 
-// تابع برای ویرایش یک پروژه مشخص
-const updateProject = async (id: number, data: { name: string; slug: string; desc: string; image: string; reason: string; problemStatement: string; problemStatementImage: string }) => {
+const updateProject = async (id: number, data: { name: string; slug: string; desc: string; image: string; reason: string; problemStatement: string; problemStatementImage: string }): Promise<Project | null> => {
     try {
-        const response = await api.put(`/projects/${id}`, data);
+        const response = await api.put(`/api/projects/${id}`, data);
         return response.data;
     } catch (error) {
         console.error("Error updating project:", error);
@@ -44,19 +41,17 @@ const updateProject = async (id: number, data: { name: string; slug: string; des
     }
 };
 
-// تابع برای حذف یک پروژه مشخص
-const deleteProject = async (id: number) => {
+const deleteProject = async (id: number): Promise<void> => {
     try {
-        await api.delete(`/projects/${id}`);
+        await api.delete(`/api/projects/${id}`);
     } catch (error) {
         console.error("Error deleting project:", error);
     }
 };
 
-// تابع برای دریافت لیست استپ‌های پروژه
-const getProjectSteps = async (limit: number) => {
+const getProjectSteps = async (limit: number): Promise<Step[]> => {
     try {
-        const response = await api.get(`/projects/projectSteps?limit=${limit}`);
+        const response = await api.get(`/api/projects/projectSteps?limit=${limit}`);
         return response.data;
     } catch (error) {
         console.error("Error fetching project steps:", error);
@@ -64,10 +59,9 @@ const getProjectSteps = async (limit: number) => {
     }
 };
 
-// تابع برای دریافت یک استپ مشخص
-const getProjectStep = async (id: number) => {
+const getProjectStep = async (id: number): Promise<Step | null> => {
     try {
-        const response = await api.get(`/projects/projectSteps/${id}`);
+        const response = await api.get(`/api/projects/projectSteps/${id}`);
         return response.data;
     } catch (error) {
         console.error("Error fetching project step:", error);
@@ -75,10 +69,9 @@ const getProjectStep = async (id: number) => {
     }
 };
 
-// تابع برای ایجاد استپ جدید برای پروژه
-const createProjectStep = async (data: { stepName: string; stepDesc: string; stepImage: string; projectId: number }) => {
+const createProjectStep = async (data: { stepName: string; stepDesc: string; stepImage: string; projectId: number }): Promise<Step | null> => {
     try {
-        const response = await api.post("/projects/projectSteps", data);
+        const response = await api.post("/api/projects/projectSteps", data);
         return response.data;
     } catch (error) {
         console.error("Error creating project step:", error);
@@ -86,10 +79,9 @@ const createProjectStep = async (data: { stepName: string; stepDesc: string; ste
     }
 };
 
-// تابع برای ویرایش یک استپ مشخص
-const updateProjectStep = async (id: number, data: { stepName: string; stepDesc: string; stepImage: string }) => {
+const updateProjectStep = async (id: number, data: { stepName: string; stepDesc: string; stepImage: string }): Promise<Step | null> => {
     try {
-        const response = await api.put(`/projects/projectSteps/${id}`, data);
+        const response = await api.put(`/api/projects/projectSteps/${id}`, data);
         return response.data;
     } catch (error) {
         console.error("Error updating project step:", error);
@@ -97,10 +89,9 @@ const updateProjectStep = async (id: number, data: { stepName: string; stepDesc:
     }
 };
 
-// تابع برای حذف یک استپ مشخص
-const deleteProjectStep = async (id: number) => {
+const deleteProjectStep = async (id: number): Promise<void> => {
     try {
-        await api.delete(`/projects/projectSteps/${id}`);
+        await api.delete(`/api/projects/projectSteps/${id}`);
     } catch (error) {
         console.error("Error deleting project step:", error);
     }

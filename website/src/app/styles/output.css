@@ -3035,10 +3035,6 @@ body:is(.dark *) {
     align-items: flex-start;
   }
 
-  .md\:justify-start {
-    justify-content: flex-start;
-  }
-
   .md\:p-0 {
     padding: 0px;
   }
@@ -3052,12 +3048,12 @@ body:is(.dark *) {
     font-size: 18px;
   }
 
-  .md\:text-\[24px\] {
-    font-size: 24px;
-  }
-
   .md\:text-\[20px\] {
     font-size: 20px;
+  }
+
+  .md\:text-\[24px\] {
+    font-size: 24px;
   }
 }
 

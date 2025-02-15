@@ -1,88 +1,43 @@
-import Single_Project_Loop from "../components/Project/loop_project";
-import Blog from "../components/Blog/Blog";
-import { Blog as BlogType } from "../components/Blog/types";
-import { Project } from "../components/Project/types";
-import Image from "next/image";
-import { Metadata } from "next";
+import LatestAnimes from "@/components/Home/LatestAnimes";
+import LatestBlogs from "@/components/Home/LatestBlogs";
+import LatestProjects from "@/components/Home/LatestProjects";
+import { Metadata } from "next/types";
 import { getBlogs } from "@/services/blogs";
 import { getProjects } from "@/services/projects";
+import { Blog as BlogType } from "@/components/Blog/types";
+import { Project } from "@/components/Project/types";
 
 export const metadata: Metadata = {
-  title: "وبسایت شخصی | حمیدرضا رضایی",
-  description: "سلام به همه!" +
+  title: "نوشته ها | حمیدرضا رضایی",
+  description:
+    "سلام به همه!" +
     " من حمیدرضا رضایی هستم. 🚀✨ برنامه نویس حرفه‌ای پایتون، و عاشق ساختن سایت‌های شگفت‌انگیز. تخصص من در فریم‌ورک‌های Django ، 🌐 ASP.NET 🐍 و Next.js🌟 است. همیشه در حال کاوش در دنیای کد هستم و تلاش می‌کنم بهترین وب‌سایت‌ها را بسازم! 💪👨‍💻" +
     "به دنیای دیجیتال خوش آمدید! 🌍📲",
 };
-
 
 export default async function Home() {
   try {
     // دریافت آخرین ۵ مقاله
     const _blogs = await getBlogs({ page: 1, limit: 5 });
-
-    if (!_blogs.blogs.length) {
-      return <div>خطایی در دریافت مقالات رخ داده است.</div>;
-    }
-
-    const blogs: BlogType[] = _blogs.blogs;
+    const blogs: BlogType[] = _blogs.blogs || [];
 
     // دریافت آخرین ۵ پروژه
     const _projects = await getProjects(5);
-
-    if (!_projects.length) {
-      return <div>خطایی در دریافت پروژه‌ها رخ داده است.</div>;
-    }
-
-    const projects: Project[] = _projects;
+    const projects: Project[] = _projects || [];
 
     return (
       <>
-        <section id="last-blogs" className="mb-8">
-          <h2 className="text-2xl 2xs:text-sm font-semibold mb-4 dark:text-white sm:text-[24px] sm:font-bold">اخرین نوشته ها</h2>
-          <div className="grid grid-cols-1 gap-y-4">
-            {Array.isArray(blogs) && blogs.map((blog) => (
-              <Blog key={blog.id} blog={blog} />
-            ))}
-            {blogs.length === 0 && (
-              <div className="blog-item-empty">
-                <a href="#">هیچ نوشته‌ای موجود نیست.</a>
-              </div>
-            )}
-          </div>
-        </section>
-        <section id="last-projects" className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 dark:text-white">لیست پروژه ها</h2>
-          <div className="grid grid-cols-1 gap-y-3">
-            {Array.isArray(projects) && projects.map((project) => (
-              <Single_Project_Loop key={project.id} project={project} />
-            ))}
-          </div>
-        </section>
-        <section id="last-animes" className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 dark:text-white">اخرین انیمه ها</h2>
-          <div className="grid grid-cols-1 gap-y-3">
-            <div className="anime-item-full dark:bg-gradient-to-br dark:from-[rgb(46,13,114)] dark:from-35% dark:to-gray-500">
-              <div className="anime-img-full dark:text-white">
-                <Image src="/img/img2.jpg" alt="Genshin Impact" width={500} height={500} />
-              </div>
-              <div className="anime-title-full dark:text-white">
-                <h3>Genshin Impact</h3>
-              </div>
-              <div className="anime-desc-full dark:text-white">
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</p>
-              </div>
-            </div>
-            <div className="anime-item-empty">
-              <div className="anime-img-empty"></div>
-              <div className="anime-title-empty"></div>
-              <div className="anime-desc-empty"></div>
-            </div>
-          </div>
-        </section>
+        <LatestBlogs blogs={blogs} />
+        <LatestProjects projects={projects} />
+        <LatestAnimes />
       </>
     );
   } catch (error) {
     console.error("Failed to fetch data:", error);
-    return <div>خطایی در دریافت داده‌ها رخ داده است.</div>;
+    return (
+      <>
+        <div>خطایی در دریافت داده‌ها رخ داده است.</div>
+      </>
+    );
   }
 }

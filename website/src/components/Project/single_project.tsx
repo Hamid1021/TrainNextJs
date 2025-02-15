@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { PropsAttr, Step } from "./types";
-import Step_Loop from "./loop_step";
+import Step_Loop from "./step_loop";
 
 export default function Single_Project(prop: PropsAttr) {
     const { project } = prop;
