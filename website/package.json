@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"next dev --turbopack\" \"tailwindcss -i ./src/app/styles/input.css -o ./src/app/styles/output.css --watch\"",
-    "build": "next build",
+    "build": "cross-env NODE_ENV=production shx cp .env.build .env && next build && shx cp .env.production .env",
     "start": "next start",
     "lint": "next lint"
   },
@@ -48,6 +48,8 @@
     "postcss": "^8.5.2",
     "prisma": "^6.3.1",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5"
+    "typescript": "^5",
+    "cross-env": "^7.0.3",
+    "shx": "^0.3.4"
   }
 }

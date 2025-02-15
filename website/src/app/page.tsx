@@ -6,6 +6,7 @@ import { getBlogs } from "@/services/blogs";
 import { getProjects } from "@/services/projects";
 import { Blog as BlogType } from "@/components/Blog/types";
 import { Project } from "@/components/Project/types";
+import { mockBlogs, mockProjects } from "@/mockData";
 
 export const metadata: Metadata = {
   title: "نوشته ها | حمیدرضا رضایی",
@@ -17,13 +18,21 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   try {
-    // دریافت آخرین ۵ مقاله
-    const _blogs = await getBlogs({ page: 1, limit: 5 });
-    const blogs: BlogType[] = _blogs.blogs || [];
+    const isProduction = process.env.NODE_ENV === 'production';
 
-    // دریافت آخرین ۵ پروژه
-    const _projects = await getProjects(5);
-    const projects: Project[] = _projects || [];
+    let blogs: BlogType[] = [];
+    let projects: Project[] = [];
+
+    if (isProduction) {
+      const _blogs = await getBlogs({ page: 1, limit: 5 });
+      blogs = _blogs.blogs || [];
+
+      const _projects = await getProjects(5);
+      projects = _projects || [];
+    } else {
+      blogs = mockBlogs as BlogType[];
+      projects = mockProjects as Project[];
+    }
 
     return (
       <>
