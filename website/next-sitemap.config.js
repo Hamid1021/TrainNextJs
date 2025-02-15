@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://yoursite.com';
-console.log('BASE_URL : ', BASE_URL);
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 /** @type {import('next-sitemap').IConfig} */
 const config = {
